@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "g++.exe build active file", 
+            "command": "D:\\MinGW\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "${file}",
+                // "${workspaceFolder}\\utils\\util_init.hpp",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-I",
+                "-std=c++17",
+                "-lglfw3",
+                "-lvulkan-1"
+            ],
+            "options": {
+                "cwd": "D:\\MinGW\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+
+}
