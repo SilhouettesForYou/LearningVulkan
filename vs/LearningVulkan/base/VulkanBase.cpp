@@ -1055,7 +1055,7 @@ HWND VulkanBase::SetupWindow(HINSTANCE hinstance, WNDPROC wndproc)
 	else
 	{
 		dwExStyle = WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;
-		dwStyle = WS_OVERLAPPEDWINDOW | WS_CLIPSIBLINGS | WS_CLIPCHILDREN;
+		dwStyle = WS_OVERLAPPEDWINDOW | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION;
 	}
 
 	RECT windowRect;
@@ -1066,10 +1066,9 @@ HWND VulkanBase::SetupWindow(HINSTANCE hinstance, WNDPROC wndproc)
 
 	AdjustWindowRectEx(&windowRect, dwStyle, FALSE, dwExStyle);
 
-	std::string windowTitle = GetWindowTitle();
 	window = CreateWindowEx(0,
 		name.c_str(),
-		windowTitle.c_str(),
+		GetWindowTitle().c_str(),
 		dwStyle | WS_CLIPSIBLINGS | WS_CLIPCHILDREN,
 		0,
 		0,

@@ -17,6 +17,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Triangle", "Triangle\Triang
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pipeline", "Pipeline\Pipeline.vcxproj", "{095A0418-71FC-4301-B85F-D9AD83CCDB64}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EA6EB701-C454-4A69-A953-8EEFFA06D744} = {EA6EB701-C454-4A69-A953-8EEFFA06D744}
+		{83702AF1-3F55-45DF-BE9C-BAD210B44AF0} = {83702AF1-3F55-45DF-BE9C-BAD210B44AF0}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

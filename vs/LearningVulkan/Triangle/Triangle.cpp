@@ -24,7 +24,7 @@
 // See "prepareVertices" for details on what's staging and on why to use it
 #define USE_STAGING true
 
-class VulkanExample : public VulkanBase
+class VulkanExampleTriangle : public VulkanBase
 {
 public:
 	// Vertex layout used in this example
@@ -107,7 +107,7 @@ public:
 	// Used to check the completion of queue operations (e.g. command buffer execution)
 	std::vector<VkFence> waitFences;
 
-	VulkanExample() : VulkanBase(ENABLE_VALIDATION)
+	VulkanExampleTriangle() : VulkanBase(ENABLE_VALIDATION)
 	{
 		title = "Vulkan Example - Basic indexed triangle";
 		// Setup a default look-at camera
@@ -118,7 +118,7 @@ public:
 		// Values not set here are initialized in the base class constructor
 	}
 
-	~VulkanExample()
+	~VulkanExampleTriangle()
 	{
 		// Clean up used Vulkan resources 
 		// Note: Inherited destructor cleans up resources stored in base class
@@ -1095,93 +1095,4 @@ public:
 // OS specific macros for the example main entry points
 // Most of the code base is shared for the different supported operating systems, but stuff like message handling diffes
 
-#if defined(_WIN32)
-// Windows entry point
-//VulkanExample *vulkanExample;
-//LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
-//{
-//	if (vulkanExample != NULL)
-//	{
-//		vulkanExample->HandleMessages(hWnd, uMsg, wParam, lParam);
-//	}
-//	return (DefWindowProc(hWnd, uMsg, wParam, lParam));
-//}
-//int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pCmdLine, int nCmdShow)
-//{
-//	for (size_t i = 0; i < __argc; i++) { VulkanExample::args.push_back(__argv[i]); };
-//	vulkanExample = new VulkanExample();
-//	vulkanExample->InitVulkan();
-//	vulkanExample->SetupWindow(hInstance, WndProc);
-//	vulkanExample->Prepare();
-//	vulkanExample->RenderLoop();
-//	delete(vulkanExample);
-//	return 0;
-//}
-VULKAN_EXAMPLE_MAIN()
-#elif defined(__ANDROID__)
-// Android entry point
-VulkanExample *vulkanExample;
-void android_main(android_app* state)
-{
-	vulkanExample = new VulkanExample();
-	state->userData = vulkanExample;
-	state->onAppCmd = VulkanExample::handleAppCommand;
-	state->onInputEvent = VulkanExample::handleAppInput;
-	androidApp = state;
-	vulkanExample->renderLoop();
-	delete(vulkanExample);
-}
-#elif defined(_DIRECT2DISPLAY)
-
-// Linux entry point with direct to display wsi
-// Direct to Displays (D2D) is used on embedded platforms
-VulkanExample *vulkanExample;
-static void handleEvent()
-{
-}
-int main(const int argc, const char *argv[])
-{
-	for (size_t i = 0; i < argc; i++) { VulkanExample::args.push_back(argv[i]); };
-	vulkanExample = new VulkanExample();
-	vulkanExample->initVulkan();
-	vulkanExample->prepare();
-	vulkanExample->renderLoop();
-	delete(vulkanExample);
-	return 0;
-}
-#elif defined(VK_USE_PLATFORM_WAYLAND_KHR)
-VulkanExample *vulkanExample;
-int main(const int argc, const char *argv[])
-{
-	for (size_t i = 0; i < argc; i++) { VulkanExample::args.push_back(argv[i]); };
-	vulkanExample = new VulkanExample();
-	vulkanExample->initVulkan();
-	vulkanExample->setupWindow();
-	vulkanExample->prepare();
-	vulkanExample->renderLoop();
-	delete(vulkanExample);
-	return 0;
-}
-#elif defined(__linux__)
-
-// Linux entry point
-VulkanExample *vulkanExample;
-static void handleEvent(const xcb_generic_event_t *event)
-{
-	if (vulkanExample != NULL)
-	{
-		vulkanExample->handleEvent(event);
-	}
-}
-int main(const int argc, const char *argv[])
-{
-	for (size_t i = 0; i < argc; i++) { VulkanExample::args.push_back(argv[i]); };
-	vulkanExample = new VulkanExample();
-	vulkanExample->initVulkan();
-	vulkanExample->setupWindow();
-	vulkanExample->prepare();
-	vulkanExample->renderLoop();
-	delete(vulkanExample);
-	return 0;
-}
-#endif
+VULKAN_EXAMPLE_MAIN(VulkanExampleTriangle)

@@ -350,8 +350,8 @@ protected:
 // OS specific macros for the example main entry points
 #if defined(_WIN32)
 // Windows entry point
-#define VULKAN_EXAMPLE_MAIN()																		\
-VulkanExample *vulkanExample;																		\
+#define VULKAN_EXAMPLE_MAIN(T)																		\
+T *vulkanExample;																		\
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)						\
 {																									\
 	if (vulkanExample != NULL)																		\
@@ -362,8 +362,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)				
 }																									\
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int)									\
 {																									\
-	for (int32_t i = 0; i < __argc; i++) { VulkanExample::args.push_back(__argv[i]); };  			\
-	vulkanExample = new VulkanExample();															\
+	for (int32_t i = 0; i < __argc; i++) { T::args.push_back(__argv[i]); };  			\
+	vulkanExample = new T();															\
 	vulkanExample->InitVulkan();																	\
 	vulkanExample->SetupWindow(hInstance, WndProc);													\
 	vulkanExample->Prepare();																		\
