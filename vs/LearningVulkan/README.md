@@ -16,7 +16,7 @@
 
 #### imgui
 
-![](../../img/imgui-property.png)
+![imgui property](../../img/imgui-property.png)
 
 ```mermaid
 graph LR
@@ -30,7 +30,7 @@ graph LR
 
 #### base
 
-![image-20200429172548264](./../../img/base-property-step-1.png)
+![base property step 1](./../../img/base-property-step-1.png)
 
 ```mermaid
 graph LR
@@ -49,7 +49,7 @@ graph LR
 	B --> G -.-> H
 ```
 
-![image-20200429173945886](D:\Code\Vulkan-code\LearningVulkan\img\base-property-step-2.png)
+![base property step 2](D:\Code\Vulkan-code\LearningVulkan\img\base-property-step-2.png)
 
 ```mermaid
 graph LR
@@ -71,7 +71,7 @@ graph LR
 
 #### Example
 
-![image-20200429174829920](../../img/example-property-step-1.png)
+![example property step 1](../../img/example-property-step-1.png)
 
 ```mermaid
 graph LR
@@ -88,7 +88,7 @@ graph LR
 
 ```
 
-![image-20200429175224862](../../img/example-property-step-2.png)
+![example property step 2](../../img/example-property-step-2.png)
 
 ```mermaid
 graph LR
@@ -100,7 +100,7 @@ graph LR
 	A --> B --> C -.-> D
 ```
 
-![image-20200429175447011](../../img/example-property-step-3.png)
+![example property step 3](../../img/example-property-step-3.png)
 
 ```mermaid
 graph LR
@@ -122,7 +122,7 @@ graph LR
     D -.-> I
 ```
 
-![image-20200429175820882](./../../img/example-property-step-4.png)
+![example property step 4](./../../img/example-property-step-4.png)
 
 ```mermaid
 graph LR
@@ -140,7 +140,7 @@ graph LR
 	D -.-> G
 ```
 
-![image-20200429180207720](D:\Code\Vulkan-code\LearningVulkan\img\example-property-step-5.png)
+![example property step 5](D:\Code\Vulkan-code\LearningVulkan\img\example-property-step-5.png)
 
 ```mermaid
 graph LR
