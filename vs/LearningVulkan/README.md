@@ -87,6 +87,7 @@ graph LR
 	B --> E -.-> F
 
 ```
+---
 
 ![example property step 2](../../img/example-property-step-2.png)
 
@@ -99,6 +100,7 @@ graph LR
 	
 	A --> B --> C -.-> D
 ```
+---
 
 ![example property step 3](../../img/example-property-step-3.png)
 
@@ -121,6 +123,7 @@ graph LR
     D -.-> H
     D -.-> I
 ```
+---
 
 ![example property step 4](./../../img/example-property-step-4.png)
 
@@ -139,6 +142,7 @@ graph LR
     D -.-> F
 	D -.-> G
 ```
+---
 
 ![example property step 5](D:\Code\Vulkan-code\LearningVulkan\img\example-property-step-5.png)
 
@@ -159,4 +163,16 @@ graph LR
 	D -.-> G
 	D -.-> H
 ```
+
+### ktx的手工配置
+
+* 项目**ktx**的目录结构，主要将关键的`.h`和`.c`文件添加到该项目中
+
+![config ktx 1](../../img/config-ktx-1.png)
+
+* 配置**ktx**属性
+
+![config ktx 2](../../img/config-ktx-2.png)
+
+![config ktx 3](../../img/config-ktx-3.png)
 

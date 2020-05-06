@@ -23,7 +23,7 @@
 > * `${cwd}` - the task runner's current working directory on startup
 > * `${lineNumber}` - the current selected line number in the active file
 
-![image-20200408153825611](./images/image-20200408153825611.png)
+![vscode+vulkan-1](../img/vscode+vulkan-1.png)
 
 - `launch.json`
 
@@ -154,7 +154,7 @@
 
 #### [GLFW](https://www.glfw.org/download.html) 窗口库
 
-![image-20200409100444094](./images/1571382183481.png)
+![vscode+vulkan-2](../img/vscode+vulkan-2.png)
 
 **一般MinGW默认下载为32位，所以GLFW选择32位的下载**
 
@@ -162,7 +162,7 @@
 
 ### 5. 头文件
 
-![image-20200409101112783](./images/image-20200409101112783.png)
+![vscode+vulkan-3](../img/vscode+vulkan-3.png)
 
 * 将`VulkanSDK`目录下的`/Include/vulkan`复制到上图路径下
 * 将`glfw-x.x.x.bin.WIN32`目录下的`/include/GLFW`复制到上图路径下
@@ -170,9 +170,7 @@
 
 ### 6. 库文件
 
-![image-20200409102255333](./images/image-20200409102255333.png)
-
-![image-20200409102839260](D:\Notebook\images\image-20200409102738233.png)
+![vscode+vulkan-4](../img/vscode+vulkan-4.png)
 
 将上述框内的`.lib`复制到`~/MinGW/mingw32/lib`目录下
 
