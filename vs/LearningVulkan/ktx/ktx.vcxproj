@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{EA6EB701-C454-4A69-A953-8EEFFA06D744}</ProjectGuid>
-    <RootNamespace>base</RootNamespace>
+    <ProjectGuid>{81C3086D-8614-4702-B5E4-517336CC0F9D}</ProjectGuid>
+    <RootNamespace>ktx</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -29,7 +29,7 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -88,14 +88,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\VulkanSDK\1.2.131.2\Include;D:\VulkanSDK\1.2.131.2\Third-Party\glfw-3.3.2.bin.WIN32\include;D:\VulkanSDK\1.2.131.2\Third-Party\glm;..\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\VulkanSDK\1.2.131.2\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\VulkanSDK\1.2.131.2\Lib32;D:\VulkanSDK\1.2.131.2\Third-Party\glfw-3.3.2.bin.WIN32\lib-vc2019;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>vulkan-1.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -143,25 +140,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Benchmark.hpp" />
-    <ClInclude Include="Camera.hpp" />
-    <ClInclude Include="Keycodes.hpp" />
-    <ClInclude Include="VulkanBase.h" />
-    <ClInclude Include="VulkanBuffer.hpp" />
-    <ClInclude Include="VulkanDebug.h" />
-    <ClInclude Include="VulkanDevice.hpp" />
-    <ClInclude Include="VulkanInitializers.hpp" />
-    <ClInclude Include="VulkanModel.hpp" />
-    <ClInclude Include="VulkanSwapChain.hpp" />
-    <ClInclude Include="VulkanTexture.hpp" />
-    <ClInclude Include="VulkanTools.h" />
-    <ClInclude Include="VulkanUIOverlay.h" />
+    <ClInclude Include="filestream.h" />
+    <ClInclude Include="GL\glcorearb.h" />
+    <ClInclude Include="GL\glew.h" />
+    <ClInclude Include="GL\glext.h" />
+    <ClInclude Include="GL\glxew.h" />
+    <ClInclude Include="GL\glxext.h" />
+    <ClInclude Include="GL\wglew.h" />
+    <ClInclude Include="GL\wglext.h" />
+    <ClInclude Include="gl_format.h" />
+    <ClInclude Include="ktx.h" />
+    <ClInclude Include="ktxint.h" />
+    <ClInclude Include="ktxvulkan.h" />
+    <ClInclude Include="memstream.h" />
+    <ClInclude Include="stream.h" />
+    <ClInclude Include="uthash.h" />
+    <ClInclude Include="vk_format.h" />
+    <ClInclude Include="vk_funcs.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="VulkanBase.cpp" />
-    <ClCompile Include="VulkanDebug.cpp" />
-    <ClCompile Include="VulkanTools.cpp" />
-    <ClCompile Include="VulkanUIOverlay.cpp" />
+    <ClCompile Include="checkheader.c" />
+    <ClCompile Include="filestream.c" />
+    <ClCompile Include="hashlist.c" />
+    <ClCompile Include="hashtable.c" />
+    <ClCompile Include="memstream.c" />
+    <ClCompile Include="swap.c" />
+    <ClCompile Include="texture.c" />
+    <ClCompile Include="vkloader.c" />
+    <ClCompile Include="vk_funcs.c" />
+    <ClCompile Include="writer.c" />
+    <ClCompile Include="writer_v1.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

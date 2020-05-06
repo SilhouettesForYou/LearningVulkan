@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\GL">
+      <UniqueIdentifier>{af736aab-dd04-48aa-8f0d-44b88f827c00}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="filestream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="gl_format.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ktx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ktxint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ktxvulkan.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="memstream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stream.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="vk_format.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="vk_funcs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="uthash.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\glcorearb.h">
+      <Filter>头文件\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\glew.h">
+      <Filter>头文件\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\glext.h">
+      <Filter>头文件\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\glxew.h">
+      <Filter>头文件\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\glxext.h">
+      <Filter>头文件\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\wglew.h">
+      <Filter>头文件\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\wglext.h">
+      <Filter>头文件\GL</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="checkheader.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="filestream.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="memstream.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="swap.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="vk_funcs.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="vkloader.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="writer.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="hashlist.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="hashtable.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="writer_v1.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

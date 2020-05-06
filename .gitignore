@@ -1,6 +1,10 @@
 /vs/LearningVulkan/.vs/
 /vs/LearningVulkan/Debug/
 /vs/LearningVulkan/base/Debug/
+/vs/LearningVulkan/ktx/Debug/
 /vs/LearningVulkan/imgui/Debug/
 /vs/LearningVulkan/Triangle/Debug/
 /vs/LearningVulkan/Pipeline/Debug/
+/vs/LearningVulkan/DescriptorSets/Debug/
+/vs/LearningVulkan/DynamicUniformBuffer/Debug/
+/vs/LearningVulkan/InputAttachments/Debug/

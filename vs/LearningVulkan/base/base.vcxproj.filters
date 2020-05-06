@@ -51,6 +51,9 @@
     <ClInclude Include="VulkanModel.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="VulkanTexture.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VulkanBase.cpp">

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\VulkanSDK\1.2.131.2\Include;D:\VulkanSDK\1.2.131.2\Third-Party\glfw-3.3.2.bin.WIN32\include;D:\VulkanSDK\1.2.131.2\Third-Party\Assimp\include;D:\VulkanSDK\1.2.131.2\Third-Party\glm;../base;../imgui</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>D:\VulkanSDK\1.2.131.2\Lib32;D:\VulkanSDK\1.2.131.2\Third-Party\glfw-3.3.2.bin.WIN32\lib-vc2019;D:\VulkanSDK\1.2.131.2\Third-Party\Assimp\lib;../Lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>vulkan-1.lib;glfw3.lib;base.lib;imgui.lib;assimp-vc142-mt.lib;ktx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>

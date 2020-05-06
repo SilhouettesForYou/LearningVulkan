@@ -2,7 +2,7 @@
 
 ### 项目结构
 
-![image-20200429170422832](../../img/project-framework.png)
+![project framework](../../img/project-framework.png)
 
 > 自上至下的区域分别是
 
