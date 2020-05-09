@@ -12,3 +12,7 @@
 /vs/LearningVulkan/SpecializationConstants/Debug/
 /vs/LearningVulkan/Texture/Debug/
 /vs/LearningVulkan/TextureCubeMap/Debug/
+vs/LearningVulkan/GltfScene/Debug/
+vs/LearningVulkan/Subpasses/Debug/
+vs/LearningVulkan/Texture3D/Debug/
+vs/LearningVulkan/TextureArray/Debug/
