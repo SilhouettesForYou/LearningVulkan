@@ -209,9 +209,21 @@ public:
 		indexCount = static_cast<uint32_t>(indices.size());
 
 		// Vertex buffers
-		VK_CHECK_RESULT(vulkanDevice->CreateBuffer(VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, &vertexBuffer, vertices.size() * sizeof(Vertex), vertices.data()));
+		VK_CHECK_RESULT(vulkanDevice->CreateBuffer(
+			VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, 
+			VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, 
+			&vertexBuffer, 
+			vertices.size() * sizeof(Vertex), 
+			vertices.data()
+		));
 		// Index buffers
-		VK_CHECK_RESULT(vulkanDevice->CreateBuffer(VK_BUFFER_USAGE_INDEX_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, &indexBuffer, indices.size() * sizeof(uint32_t), indices.data()));
+		VK_CHECK_RESULT(vulkanDevice->CreateBuffer(
+			VK_BUFFER_USAGE_INDEX_BUFFER_BIT, 
+			VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
+			&indexBuffer, 
+			indices.size() * sizeof(uint32_t), 
+			indices.data()
+		));
 	}
 
 	void SetupVertexDescriptions()
@@ -226,7 +238,7 @@ public:
 		vertices.attributeDescriptions =
 		{
 			vks::initializers::VertexInputAttributeDescription(VERTEX_BUFFER_BIND_ID, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, pos)),
-			vks::initializers::VertexInputAttributeDescription(VERTEX_BUFFER_BIND_ID, 0, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, color))
+			vks::initializers::VertexInputAttributeDescription(VERTEX_BUFFER_BIND_ID, 1, VK_FORMAT_R32G32B32_SFLOAT, offsetof(Vertex, color))
 		};
 
 		vertices.inputState = vks::initializers::PipelineVertexInputStateCreateInfo();
@@ -260,7 +272,7 @@ public:
 		};
 
 		VkDescriptorSetLayoutCreateInfo descriptorLayout =
-			vks::initializers::DescriptorSetLayoutCreateInfo(setLayoutBindings.data(), setLayoutBindings.size());
+			vks::initializers::DescriptorSetLayoutCreateInfo(setLayoutBindings.data(), static_cast<uint32_t>(setLayoutBindings.size()));
 
 		VK_CHECK_RESULT(vkCreateDescriptorSetLayout(device, &descriptorLayout, nullptr, &descriptorSetLayout));
 
@@ -284,7 +296,7 @@ public:
 			vks::initializers::WriteDescriptorSet(descriptorSet, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, 1, &uniformBuffers.dynamic.descriptor),
 		};
 
-		vkUpdateDescriptorSets(device, writeDescriptorSets.size(), writeDescriptorSets.data(), 0, NULL);
+		vkUpdateDescriptorSets(device, static_cast<uint32_t>(writeDescriptorSets.size()), writeDescriptorSets.data(), 0, NULL);
 	}
 
 	void PreparePipelines()
@@ -310,6 +322,7 @@ public:
 		shaderStages[0] = LoadShader(GetAssetPath() + "shaders/dynamicuniformbuffer/base.vert.spv", VK_SHADER_STAGE_VERTEX_BIT);
 		shaderStages[1] = LoadShader(GetAssetPath() + "shaders/dynamicuniformbuffer/base.frag.spv", VK_SHADER_STAGE_FRAGMENT_BIT);
 
+		pipelineCreateInfo.pVertexInputState = &vertices.inputState;
 		pipelineCreateInfo.pInputAssemblyState = &inputAssemblyState;
 		pipelineCreateInfo.pRasterizationState = &rasterizationState;
 		pipelineCreateInfo.pColorBlendState = &colorBlendState;
@@ -317,7 +330,7 @@ public:
 		pipelineCreateInfo.pViewportState = &viewportState;
 		pipelineCreateInfo.pDepthStencilState = &depthStencilState;
 		pipelineCreateInfo.pDynamicState = &dynamicState;
-		pipelineCreateInfo.stageCount = shaderStages.size();
+		pipelineCreateInfo.stageCount = static_cast<uint32_t>(shaderStages.size());
 		pipelineCreateInfo.pStages = shaderStages.data();
 
 		VK_CHECK_RESULT(vkCreateGraphicsPipelines(device, pipelineCache, 1, &pipelineCreateInfo, nullptr, &pipeline));
@@ -337,7 +350,7 @@ public:
 
 		size_t bufferSize = OBJECT_INSTANCES * dynamicAlignment;
 
-		uboDataDynamic.model = reinterpret_cast<glm::mat4*>(AlignedAlloc(bufferSize, dynamicAlignment));
+		uboDataDynamic.model = (glm::mat4*)(AlignedAlloc(bufferSize, dynamicAlignment));
 		assert(uboDataDynamic.model);
 
 		std::cout << "minUniformBufferOffsetAlignment = " << minUboAlignment << std::endl;
@@ -356,17 +369,17 @@ public:
 		VK_CHECK_RESULT(uniformBuffers.dynamic.Map());
 
 		// Prepare per-object matrices with offsets and random rotations
-		std::default_random_engine randEngine(benchmark.active ? 0 : static_cast<unsigned>(time(nullptr)));
+		std::default_random_engine randEngine(benchmark.active ? 0 : (unsigned)(time(nullptr)));
 		std::normal_distribution<float> randDist(-1.0f, 1.0f);
 
 		for (auto i = 0; i < OBJECT_INSTANCES; ++i)
 		{
 			rotations[i] = glm::vec3(randDist(randEngine), randDist(randEngine), randDist(randEngine)) * 2.0f * (float)M_PI;
-			rotations[i] = glm::vec3(randDist(randEngine), randDist(randEngine), randDist(randEngine));
+			rotationSpeeds[i] = glm::vec3(randDist(randEngine), randDist(randEngine), randDist(randEngine));
 		}
 
 		UpdateUniformBuffers();
-		UpdateDynamicUniformBuffers();
+		UpdateDynamicUniformBuffers(true);
 	}
 
 	void UpdateUniformBuffers()
@@ -381,7 +394,7 @@ public:
 	{
 		// Update at max. 60 fps
 		animationTimer += frameTimer;
-		if ((animationTimer < 1.0f / 60) && !force)
+		if ((animationTimer < 1.0f / 600) && (!force))
 			return;
 
 		// Dynamic ubo with per-object model matrices indexed by offsets in the command buffer
@@ -396,16 +409,16 @@ public:
 				{
 					uint32_t index = x * dim * dim + y * dim + z;
 					// Aligned offset
-					auto modelMat = reinterpret_cast<glm::mat4*>(reinterpret_cast<uint64_t>(uboDataDynamic.model) + index * dynamicAlignment);
+					auto modelMat = (glm::mat4*)(((uint64_t)uboDataDynamic.model + (index * dynamicAlignment)));
 
 					// Update rotations
 					rotations[index] += animationTimer * rotationSpeeds[index];
 
 					// Update matrices
 					glm::vec3 pos = glm::vec3(
-						-((dim * x) / 2.0f) + offset.x / 2.0f + x * offset.x, 
-						-((dim * y) / 2.0f) + offset.y / 2.0f + y * offset.y,
-						-((dim * z) / 2.0f) + offset.z / 2.0f + z * offset.z
+						-((dim * offset.x) / 2.0f) + offset.x / 2.0f + x * offset.x,
+						-((dim * offset.y) / 2.0f) + offset.y / 2.0f + y * offset.y,
+						-((dim * offset.z) / 2.0f) + offset.z / 2.0f + z * offset.z
 					);
 					*modelMat = glm::translate(glm::mat4(1.0f), pos);
 					*modelMat = glm::rotate(*modelMat, rotations[index].x, glm::vec3(1.0f, 1.0f, 0.0f));
@@ -417,7 +430,7 @@ public:
 
 		animationTimer = 0.0f;
 
-		memcpy(uniformBuffers.dynamic.mapped, &uboDataDynamic.model, uniformBuffers.dynamic.size);
+		memcpy(uniformBuffers.dynamic.mapped, uboDataDynamic.model, uniformBuffers.dynamic.size);
 		// Flush to make changes visible to host
 		VkMappedMemoryRange memoryRange = vks::initializers::MappedMemoryRange();
 		memoryRange.memory = uniformBuffers.dynamic.memory;
@@ -446,7 +459,7 @@ public:
 
 		Draw();
 		if (!paused)
-			UpdateUniformBuffers();
+			UpdateDynamicUniformBuffers();
 	}
 
 	virtual void ViewChanged()

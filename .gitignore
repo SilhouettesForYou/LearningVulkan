@@ -8,3 +8,7 @@
 /vs/LearningVulkan/DescriptorSets/Debug/
 /vs/LearningVulkan/DynamicUniformBuffer/Debug/
 /vs/LearningVulkan/InputAttachments/Debug/
+/vs/LearningVulkan/PushConstants/Debug/
+/vs/LearningVulkan/SpecializationConstants/Debug/
+/vs/LearningVulkan/Texture/Debug/
+/vs/LearningVulkan/TextureCubeMap/Debug/
