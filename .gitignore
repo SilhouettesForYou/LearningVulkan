@@ -16,3 +16,6 @@ vs/LearningVulkan/GltfScene/Debug/
 vs/LearningVulkan/Subpasses/Debug/
 vs/LearningVulkan/Texture3D/Debug/
 vs/LearningVulkan/TextureArray/Debug/
+vs/LearningVulkan/OffScreen/Debug/
+vs/LearningVulkan/ParticleFire/Debug/
+vs/LearningVulkan/StencilBuffer/Debug/
