@@ -52,6 +52,7 @@
 #endif
 
 const std::string GetAssetPath();
+const std::string GetShadersPath();
 
 namespace vks
 {
@@ -66,6 +67,9 @@ namespace vks
         // Selected a suitable supported depth format starting with 32 bit down to 16 bit
 		// Returns false if none of the depth formats in the list is supported by the device
         VkBool32 GetSupportedDepthFormat(VkPhysicalDevice physicalDevice, VkFormat* depthFormat);
+
+		// Returns if a given format support LINEAR filtering
+		VkBool32 FormatIsFilterable(VkPhysicalDevice physicalDevice, VkFormat format, VkImageTiling tiling);
 
 		// Put an image memory barrier for setting an image layout on the sub resource into the given command buffer
 		void SetImageLayout(
@@ -85,6 +89,18 @@ namespace vks
 			VkImageLayout newImageLayout,
 			VkPipelineStageFlags srcStageMask = VK_PIPELINE_STAGE_ALL_COMMANDS_BIT,
 			VkPipelineStageFlags dstStageMask = VK_PIPELINE_STAGE_ALL_COMMANDS_BIT);
+
+		/** @brief Insert an image memory barrier into the command buffer */
+		void InsertImageMemoryBarrier(
+			VkCommandBuffer cmdbuffer,
+			VkImage image,
+			VkAccessFlags srcAccessMask,
+			VkAccessFlags dstAccessMask,
+			VkImageLayout oldImageLayout,
+			VkImageLayout newImageLayout,
+			VkPipelineStageFlags srcStageMask,
+			VkPipelineStageFlags dstStageMask,
+			VkImageSubresourceRange subresourceRange);
 
         void ExitFatal(std::string message, int32_t exitCode);
         void ExitFatal(std::string message, VkResult resultCode);

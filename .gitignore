@@ -19,3 +19,12 @@ vs/LearningVulkan/TextureArray/Debug/
 vs/LearningVulkan/OffScreen/Debug/
 vs/LearningVulkan/ParticleFire/Debug/
 vs/LearningVulkan/StencilBuffer/Debug/
+vs/LearningVulkan/HighDynamicRange/Debug/
+vs/LearningVulkan/MultiSampling/Debug/
+vs/LearningVulkan/MultiThreading/Debug/
+vs/LearningVulkan/OmnidirectionalShadowMapping/Debug/
+vs/LearningVulkan/RuntimeMipMapGeneration/Debug/
+vs/LearningVulkan/SceneRendering/Debug/
+vs/LearningVulkan/ScreenShoot/Debug/
+vs/LearningVulkan/ShadowMapping/Debug/
+vs/LearningVulkan/ShadowMappingCasCade/Debug/

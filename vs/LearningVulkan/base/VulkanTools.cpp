@@ -11,6 +11,11 @@ const std::string GetAssetPath()
 #endif
 }
 
+const std::string GetShadersPath()
+{
+	return "./../data/shaders/";
+}
+
 namespace vks
 {
 	namespace tools
@@ -88,6 +93,21 @@ namespace vks
 					return true;
 				}
 			}
+
+			return false;
+		}
+
+		// Returns if a given format support LINEAR filtering
+		VkBool32 FormatIsFilterable(VkPhysicalDevice physicalDevice, VkFormat format, VkImageTiling tiling)
+		{
+			VkFormatProperties formatProps;
+			vkGetPhysicalDeviceFormatProperties(physicalDevice, format, &formatProps);
+
+			if (tiling == VK_IMAGE_TILING_OPTIMAL)
+				return formatProps.optimalTilingFeatures & VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT;
+
+			if (tiling == VK_IMAGE_TILING_LINEAR)
+				return formatProps.linearTilingFeatures & VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT;
 
 			return false;
 		}
