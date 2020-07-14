@@ -54,6 +54,9 @@
     <ClInclude Include="VulkanTexture.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Frustum.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VulkanBase.cpp">
@@ -67,6 +70,9 @@
     </ClCompile>
     <ClCompile Include="VulkanUIOverlay.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadPool.hpp">
+      <Filter>头文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

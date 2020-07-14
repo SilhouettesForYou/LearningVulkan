@@ -331,7 +331,7 @@ namespace vks
             VK_CHECK_RESULT(vkAllocateMemory(logicalDevice, &memAlloc, nullptr, memory));
 
             // If a pointer to the buffer data has been passed, map the buffer and copy over the data
-            if (!data)
+            if (data)
             {
                 void* mapped;
                 VK_CHECK_RESULT(vkMapMemory(logicalDevice, *memory, 0, size, 0, &mapped));

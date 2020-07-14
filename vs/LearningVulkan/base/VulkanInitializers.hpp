@@ -31,6 +31,13 @@ namespace vks
             return commandBufferAllocateInfo;
         }
 
+		inline VkCommandPoolCreateInfo CommandPoolCreateInfo()
+		{
+			VkCommandPoolCreateInfo cmdPoolCreateInfo{};
+			cmdPoolCreateInfo.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
+			return cmdPoolCreateInfo;
+		}
+
         inline VkCommandPoolCreateInfo CommandCreateInfo()
         {
             VkCommandPoolCreateInfo commandPoolCreateInfo{};
