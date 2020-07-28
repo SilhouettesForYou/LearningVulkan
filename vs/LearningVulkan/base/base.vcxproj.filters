@@ -57,6 +57,9 @@
     <ClInclude Include="Frustum.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="VulkanFrameBuffer.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VulkanBase.cpp">
